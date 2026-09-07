@@ -1,0 +1,30 @@
+create view gold.dact_billing as
+select 
+   row_number() over(order by bill_id) as bill_key,
+   a.appointment_key,
+   d.doctor_key,
+   p.patient_key,
+   t.treatment_key,
+   dt.full_date as bill_date_key,
+   b.bill_id,
+   b.payment_method,
+   b.payment_status,
+   b.amount
+from silver.billing b
+
+left join gold.dim_treatments t
+on b.treatment_id = t.treatment_id 
+
+left join gold.dim_appointment a
+on t.appointment_id = a.appointment_id 
+
+left join gold.dim_patients p
+on b.patient_id=p.patient_id
+
+left join gold.dim_doctors d
+on a.doctor_id = d.doctor_id
+
+left join gold.dim_date dt 
+on b.bill_date = dt.full_date
+
+select * from gold.dact_billing
