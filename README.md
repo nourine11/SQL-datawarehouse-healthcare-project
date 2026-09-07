@@ -373,3 +373,14 @@ The main objectives of this project are to:
 The project includes a visual representation of the healthcare data warehouse architecture:
 
 healthcare_architecture.png
+
+# Diagrams:
+![healthcare_architecture](healthcare_architecture.png)
+
+![heaih-data-flow](heaih-data-flow.png)
+
+![layers](layers.png)
+
+![layers2](layers2.png)
+
+![star_schema_healthcare.drawid](star_schema_healthcare.drawid.png)
