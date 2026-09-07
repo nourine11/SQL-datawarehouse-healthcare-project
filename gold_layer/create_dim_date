@@ -1,0 +1,62 @@
+CREATE TABLE gold.dim_date
+(
+    date_key INT PRIMARY KEY,
+    full_date DATE NOT NULL,
+    year INT,
+    quarter INT,
+    month INT,
+    month_name VARCHAR(20),
+    week_of_year INT,
+    day_of_month INT,
+    day_name VARCHAR(20),
+    is_weekend BIT
+)
+
+DECLARE @StartDate DATE = '2023-01-01';
+DECLARE @EndDate DATE = '2023-12-31';
+
+WITH Date_CTE AS
+(
+    SELECT @StartDate AS full_date
+
+    UNION ALL
+
+    SELECT DATEADD(DAY, 1, full_date)
+    FROM Date_CTE
+    WHERE full_date < @EndDate
+)
+
+INSERT INTO gold.dim_date
+(
+    date_key,
+    full_date,
+    year,
+    quarter,
+    month,
+    month_name,
+    week_of_year,
+    day_of_month,
+    day_name,
+    is_weekend
+)
+SELECT
+    CONVERT(INT, CONVERT(VARCHAR(8), full_date, 112)),
+    full_date,
+    YEAR(full_date),
+    DATEPART(QUARTER, full_date),
+    MONTH(full_date),
+    DATENAME(MONTH, full_date),
+    DATEPART(WEEK, full_date),
+    DAY(full_date),
+    DATENAME(WEEKDAY, full_date),
+    CASE
+        WHEN DATENAME(WEEKDAY, full_date) IN ('Saturday', 'Sunday')
+        THEN 1
+        ELSE 0
+    END
+FROM Date_CTE
+OPTION (MAXRECURSION 0)
+
+SELECT *
+FROM gold.dim_date
+ORDER BY full_date
