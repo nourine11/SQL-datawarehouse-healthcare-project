@@ -377,10 +377,10 @@ healthcare_architecture.png
 # Diagrams:
 ![healthcare_architecture](healthcare_architecture.png)
 
-![heaih-data-flow](heaih-data-flow.png)
+![health_data_flow](health_data_flow.png)
 
 ![layers](layers.png)
 
 ![layers2](layers2.png)
 
-![star_schema_healthcare.drawid](star_schema_healthcare.drawid.png)
+![star_schema_healthcare](star_schema_healthcare.png)
