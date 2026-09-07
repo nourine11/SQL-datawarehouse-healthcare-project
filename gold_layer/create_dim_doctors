@@ -1,0 +1,15 @@
+create view gold.dim_doctors as
+select
+   row_number() over (order by doctor_id) as doctor_key,
+   doctor_id ,
+   first_name,
+   last_name,
+   first_name + ' ' + last_name as full_name,
+   specialization,
+   phone_number,
+   years_experience,
+   hospital_branch,
+   email
+from silver.doctors
+
+select * from gold.dim_doctors
