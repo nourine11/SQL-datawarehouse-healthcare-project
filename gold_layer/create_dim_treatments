@@ -1,0 +1,12 @@
+create view gold.dim_treatments as
+select 
+   row_number () over (order by treatment_id) as treatment_key,
+   treatment_id,
+   appointment_id ,
+   treatment_type,
+   description,
+   cost,
+   treatment_date
+from silver.treatments
+
+select* from gold.dim_treatments
