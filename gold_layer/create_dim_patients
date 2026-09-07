@@ -1,0 +1,18 @@
+create view gold.dim_patients as
+select
+   row_number() over (order by patient_id) as patient_key ,
+   patient_id,
+   first_name,
+   last_name,
+   first_name + ' ' + last_name as full_name,
+   gender ,
+   date_of_birth,
+   contact_number,
+   address,
+   registration_date,
+   insurance_provider,
+   insurance_number,
+   email
+from silver.patients
+
+select * from gold.dim_patients
