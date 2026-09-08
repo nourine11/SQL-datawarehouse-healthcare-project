@@ -9,6 +9,8 @@ The project focuses on healthcare entities such as patients, doctors, appointmen
 
 ## The project follows a Medallion-style architecture:
 
+![healthcare_architecture](healthcare_architecture.png)
+
 Source CSV Files → Bronze Layer → Silver Layer → Gold Layer
 
 ##Bronze Layer:
@@ -54,6 +56,8 @@ The Gold layer is designed for analytics and reporting.
 The model follows a Star Schema where the billing fact is connected to the relevant dimensions.
 
 # ⭐ Star Schema
+
+![star_schema_healthcare](star_schema_healthcare.png)
 
 ## The main fact view is the billing fact, which connects billing transactions with:
 
@@ -127,6 +131,8 @@ Patient Dimension
 
 # 🔄 ETL Process
 
+![health_data_flow](health_data_flow.png)
+
 ## The project follows these main steps:
 
 1. Create the database and schemas
@@ -158,17 +164,9 @@ Patient Dimension
   • Join billing data with the required dimensions
   • Build the analytical billing view
 
-
-# Diagrams:
-![healthcare_architecture](healthcare_architecture.png)
-
-![health_data_flow](health_data_flow.png)
-
 ![layers](layers.png)
 
 ![layers2](layers2.png)
-
-![star_schema_healthcare](star_schema_healthcare.png)
 
 ## 🧰 Technologies Used
 
