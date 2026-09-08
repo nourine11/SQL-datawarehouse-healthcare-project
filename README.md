@@ -158,6 +158,18 @@ Patient Dimension
   • Join billing data with the required dimensions
   • Build the analytical billing view
 
+
+# Diagrams:
+![healthcare_architecture](healthcare_architecture.png)
+
+![health_data_flow](health_data_flow.png)
+
+![layers](layers.png)
+
+![layers2](layers2.png)
+
+![star_schema_healthcare](star_schema_healthcare.png)
+
 ## 🧰 Technologies Used
 
 • Microsoft SQL Server
@@ -211,104 +223,6 @@ SQL-datawarehouse-healthcare-project/
 ├── healthcare_architecture.png
 └── README.md
 ```
-
-## ▶️ How to Run the Project
-
-1. Create the Database and Schemas
-
-Run:
-
-```sql
-haelthcare project DB and schemas (3 layers) creation.sql
-```
-
-This creates the database and the three schemas:
-
-```text
-bronze
-silver
-gold
-```
-
-2. Create Bronze Tables
-
-Run:
-
-```text
-ddl_bronze_layer_creation_healthcare_project.sql
-```
-
-3. Create the Bronze Loading Procedure
-
-Run:
-
-```text
-stored procedure bronze layer (bulk insert).sql
-```
-
-Update the CSV file paths inside the procedure to match the location on your machine.
-
-Then execute:
-
-```sql
-EXEC bronze.load_raw_data;
-```
-
-4. Perform Data Quality Checks
-
-Run the checking scripts to verify:
-
-• Duplicate IDs
-• Null IDs
-• Unwanted spaces
-• Invalid categorical values
-
-5. Create Silver Tables
-
-Run:
-
-```text
-ddl_silver_layer_creation_healthcare_project.sql
-```
-
-6. Create and Run the Silver Loading Procedure
-
-Run:
-
-```text
-stored-procedure-silver-layer-healthcare-project.sql
-```
-
-Then execute:
-
-```sql
-EXEC silver.load_silver;
-```
-
-7. Create Gold Dimensions
-
-Run:
-
-```text
-create_dim_patients.sql
-create_dim_doctors.sql
-create_dim_appointments.sql
-create_dim_treatment.sql
-create_dim_date.sql
-```
-
-8. Create the Billing Fact
-
-Run:
-
-```text
-create_fact_billing.sql
-```
-
-The final Gold layer can then be queried for analytical use cases.
-
-────────
-
 # 🔍 Data Quality
 
 Data quality checks were implemented before moving data from Bronze to Silver.
@@ -323,20 +237,6 @@ The project checks for:
 • Correct date transformations
 
 This ensures that the Gold layer is built from cleaned and validated data.
-
-# 📊 Potential Analytical Questions
-
-The resulting data warehouse can support analysis such as:
-
-• What is the total billing amount?
-• What are the most common treatments?
-• Which doctors have the highest number of appointments?
-• What are the most frequently used payment methods?
-• What is the distribution of patients by gender?
-• Which hospital branches generate the most billing?
-• What are the most common reasons for visits?
-• What is the average treatment cost?
-• How does billing change over time?
 
 ## 🎯 Project Objectives:
 
@@ -367,20 +267,3 @@ The main objectives of this project are to:
 • Stored Procedures
 • SQL Views
 • Surrogate Keys
-
-## 📷 Architecture
-
-The project includes a visual representation of the healthcare data warehouse architecture:
-
-healthcare_architecture.png
-
-# Diagrams:
-![healthcare_architecture](healthcare_architecture.png)
-
-![health_data_flow](health_data_flow.png)
-
-![layers](layers.png)
-
-![layers2](layers2.png)
-
-![star_schema_healthcare](star_schema_healthcare.png)
