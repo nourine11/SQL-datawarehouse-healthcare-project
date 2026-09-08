@@ -181,46 +181,6 @@ Patient Dimension
 • Star Schema
 • CSV Files
 
-# 📂 Project Structure
-
-```text
-SQL-datawarehouse-healthcare-project/
-│
-├── appointments.csv
-├── billing.csv
-├── doctors.csv
-├── patients.csv
-├── treatments.csv
-│
-├── haelthcare project DB and schemas (3 layers) creation.sql
-├── ddl_bronze_layer_creation_healthcare_project.sql
-├── ddl_silver_layer_creation_healthcare_project.sql
-│
-├── stored procedure bronze layer (bulk insert).sql
-├── stored-procedure-silver-layer-healthcare-project.sql
-├── the-2-stored-procedures-healthcare-project.sql
-│
-├── check-patients-and-treatments.sql
-├── checking-bronze.doctors.sql
-├── checking-data-quality-of-bronze.billing.sql
-├── check_the_data_quality_of_each_column_in_the_bronze_layer.sql
-│
-├── insert-cleaned-data-into-silver.billing.sql
-├── insert-into-silver.doctors.sql
-├── insert-into-silver.patients.sql
-├── insert-into-silver.treatments.sql
-├── insert_cleaned_data_after_checking_in_the_silver_appointments.sql
-│
-├── create_dim_appointments.sql
-├── create_dim_date.sql
-├── create_dim_doctors.sql
-├── create_dim_patients.sql
-├── create_dim_treatment.sql
-├── create_fact_billing.sql
-│
-├── healthcare_architecture.png
-└── README.md
-```
 # 🔍 Data Quality
 
 Data quality checks were implemented before moving data from Bronze to Silver.
